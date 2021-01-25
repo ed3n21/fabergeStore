@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Faberge.DAL.Models
+namespace Faberge.BL.Models
 {
     public class CatalogBL
     {
