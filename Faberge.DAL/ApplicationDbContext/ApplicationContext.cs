@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Faberge.DAL.ApplicationDbContext
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public ApplicationContext() : base("FabergeStore") { }
 
