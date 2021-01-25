@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Faberge.BL.Models;
 using Faberge.DAL.Models;
 using System;
 using System.Collections.Generic;
