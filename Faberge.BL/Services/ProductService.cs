@@ -9,7 +9,12 @@ using System.Threading.Tasks;
 
 namespace Faberge.BL.Services
 {
-    public class ProductService : GenericService<ProductBL, Product>
+    public interface IProductService : IGenericService<ProductBL>
+    {
+
+    }
+
+    public class ProductService : GenericService<ProductBL, Product>, IProductService
     {
         private readonly IMapper _mapper;
 

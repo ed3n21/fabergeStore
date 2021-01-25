@@ -9,7 +9,7 @@ using Faberge.DAL.ApplicationDbContext;
 
 namespace Faberge.BL
 {
-    class LightInjectConfigBL
+    public static class LightInjectConfigBL
     {
         public static ServiceContainer Configurate(ServiceContainer container)
         {
