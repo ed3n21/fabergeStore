@@ -15,20 +15,28 @@ namespace Faberge.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _service;
+        private readonly ICatalogService _catalogService;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductService service, IMapper mapper)
+        public ProductController(IProductService service, IMapper mapper, ICatalogService catalogService)
         {
             _service = service;
             _mapper = mapper;
+            _catalogService = catalogService;
         }
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, int? CatalogId)
         {
             int pageSize = 3;
             int pageNumber = page ?? 1;
 
-            IEnumerable<ProductModel> products = _mapper.Map<IEnumerable<ProductModel>>(_service.Get());
+            ViewBag.Catalogs = _mapper.Map<IEnumerable<CatalogModel>>(_catalogService.Get());
+
+            IEnumerable<ProductModel> products;
+            if (CatalogId == null)
+                products = _mapper.Map<IEnumerable<ProductModel>>(_service.Get());
+            else 
+                products = _mapper.Map<IEnumerable<ProductModel>>(_service.Get().Where(prod => prod.CatalogId == CatalogId.Value));
             return View(products.ToPagedList(pageNumber, pageSize));
         }
 
@@ -49,7 +57,6 @@ namespace Faberge.Web.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             var product = _service.Get(id);

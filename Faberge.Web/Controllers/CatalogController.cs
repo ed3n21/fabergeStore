@@ -44,5 +44,27 @@ namespace Faberge.Web.Controllers
             }
             return View();
         }
+
+        public ActionResult Edit(int id)
+        {
+            CatalogModel catalog = _mapper.Map<CatalogModel>(_service.Get(id));
+            if (catalog == null)
+            {
+                return HttpNotFound();
+            }
+            return View(catalog);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CatalogModel product)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.Edit(_mapper.Map<CatalogBL>(product));
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
