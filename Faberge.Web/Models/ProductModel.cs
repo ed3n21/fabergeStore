@@ -17,7 +17,6 @@ namespace Faberge.Web.Models
         [StringLength(300, MinimumLength = 3)]
         public string Description { get; set; }
         public int Quantity { get; set; }
-        [Url]
         public string ImgSrc { get; set; }
 
         public int CatalogId { get; set; }

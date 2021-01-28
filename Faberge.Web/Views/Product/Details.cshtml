@@ -1,0 +1,24 @@
+﻿@using Faberge.Web.Models
+@model ProductModel 
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <img src="@Model.ImgSrc" style="width: 30rem;" alt="@Model.Name" />
+        <p>@Model.Price</p>
+        <p>@Model.Quantity eggs left.</p>
+        <a href="#" class="btn btn-success">Add to cart</a>
+        <a href="/Product/Edit?id=@Model.Id" class="btn btn-primary">Edit</a>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
