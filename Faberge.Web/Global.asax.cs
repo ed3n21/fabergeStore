@@ -20,6 +20,7 @@ namespace Faberge.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             LightInjectConfig.Configurate();
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

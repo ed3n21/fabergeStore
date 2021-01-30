@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
 using Faberge.BL.Models;
 using Faberge.BL.Services;
+using Faberge.Web.Filters.LogFilters;
 using Faberge.Web.Models;
+using Faberge.Web.Utilities;
 using PagedList;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Faberge.Web.Controllers
 {
     [Authorize]
+    [LogActionFilter]
     public class ProductController : Controller
     {
         private readonly IProductService _service;
