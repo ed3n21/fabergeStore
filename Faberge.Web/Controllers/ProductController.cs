@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Faberge.Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _service;
@@ -25,6 +26,7 @@ namespace Faberge.Web.Controllers
             _catalogService = catalogService;
         }
 
+        [AllowAnonymous]
         public ActionResult Index(int? page, int? CatalogId)
         {
             int pageSize = 3;
@@ -59,12 +61,15 @@ namespace Faberge.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            var product = _service.Get(id);
-
-            if (product != null)
+            if (User.Identity.Name == "admin@gmail.com")
             {
-                _service.Delete(id);
-                return RedirectToAction("Index");
+                var product = _service.Get(id);
+
+                if (product != null)
+                {
+                    _service.Delete(id);
+                    return RedirectToAction("Index");
+                }
             }
             return View();
         }

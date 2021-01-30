@@ -20,7 +20,10 @@
             <li><a href="/Product/Index?CatalogId=@catalog.Id">@catalog.Name</a></li>
         }
     </ul>
-    <a href="/Product/Create" class="btn btn-primary" role="button">Create new</a>
+    @if (User.Identity.Name == "admin@gmail.com")
+    {
+        <a href="/Product/Create" class="btn btn-primary" role="button">Create new</a>
+    }
 </div>
 
 
@@ -34,8 +37,14 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text">@item.Price</p>
-                    <a href="/Product/Details?id=@item.Id" class="btn btn-primary">Edit</a>
-                    <a href="/Product/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                    <a href="/Product/Details?id=@item.Id" class="btn btn-primary">Details</a>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (User.Identity.Name == "admin@gmail.com")
+                        {
+                            <a href="/Product/Delete?id=@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                    }
                 </div>
             </div>
         }

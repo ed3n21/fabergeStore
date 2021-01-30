@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Faberge.Web.Controllers
 {
+    [Authorize]
     public class CatalogController : Controller
     {
         private readonly ICatalogService _service;
