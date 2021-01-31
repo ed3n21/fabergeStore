@@ -67,5 +67,25 @@ namespace Faberge.Web.Controllers
             }
             return View();
         }
+
+        public ActionResult Delete(int id)
+        {
+            var catalog = _mapper.Map<CatalogModel>(_service.Get(id));
+
+            if (catalog == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View();
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _service.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }

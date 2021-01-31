@@ -14,7 +14,7 @@
         <img src="@Model.ImgSrc" style="width: 30rem;" alt="@Model.Name" />
         <p>@Model.Price</p>
         <p>@Model.Quantity eggs left.</p>
-        <a href="#" class="btn btn-success">Add to cart</a>
+        <a href="#" class="btn btn-success">Buy</a>
         @if (User.Identity.Name == "admin@gmail.com")
         {
             <a href="/Product/Edit?id=@Model.Id" class="btn btn-primary">Edit</a>

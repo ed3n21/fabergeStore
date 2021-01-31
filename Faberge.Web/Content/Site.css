@@ -36,3 +36,28 @@ textarea {
 .card { 
     margin: 30px;
 }
+
+.navbar-header {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.3em;
+}
+
+.navbar {
+    padding: 15px;
+    background: #1E453E;
+}
+
+h1 {
+    font-family: garda_titlingtworegular;
+    font-weight: 400;
+    text-align: center;
+}
+
+.jumbotron {
+    color: #E1D6C3;
+    background: #306844;
+}
+
+body {
+    padding-top: 100px;
+}
