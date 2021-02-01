@@ -13,7 +13,7 @@ namespace Faberge.DAL.Models
         public DateTime DeliveryDate { get; set; }
 
         // TODO
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
     }

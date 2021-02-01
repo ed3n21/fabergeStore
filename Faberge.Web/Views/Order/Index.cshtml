@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Faberge.Web.Models.OrderModel>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+@foreach (var order in Model)
+{
+    <div class="container">
+        <hr />
+        <p>Order #@order.Id</p>
+        <p>Product: @order.Product.Name</p>
+        <p>Price: @order.Product.Price</p>
+        <p>Date: @order.Date</p>
+        <p>Estimated delivery: @order.DeliveryDate</p>
+        <p></p>
+    </div>
+}
+

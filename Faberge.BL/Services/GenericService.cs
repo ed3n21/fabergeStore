@@ -10,7 +10,7 @@ namespace Faberge.BL.Services
     public interface IGenericService<ModelBL> where ModelBL : class
     {
         ModelBL Get(int id);
-        IEnumerable<ModelBL> Get();
+        IEnumerable<ModelBL> Get(string include = "");
         void Create(ModelBL model);
         void Edit(ModelBL model);
         void Delete(int id);
@@ -48,10 +48,10 @@ namespace Faberge.BL.Services
         {
             return Map(_repository.Get(id));
         }
-
-        public IEnumerable<ModelBL> Get()
+         
+        public IEnumerable<ModelBL> Get(string include = "") // include - for loading nested objects data
         {
-            return Map(_repository.Get());
+            return Map(_repository.Get(include));
         }
 
         public abstract ModelDAL Map(ModelBL model);

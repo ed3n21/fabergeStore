@@ -11,7 +11,7 @@ namespace Faberge.DAL
     public interface IGenericRepository<ModelDAL> where ModelDAL : class 
     {
         ModelDAL Get(int id);
-        IEnumerable<ModelDAL> Get();
+        IEnumerable<ModelDAL> Get(string include = "");
         void Create(ModelDAL model);
         void Edit(ModelDAL model);
         void Delete(int id);
@@ -54,8 +54,10 @@ namespace Faberge.DAL
             return _dbSet.Find(id);
         }
 
-        public IEnumerable<ModelDAL> Get()
+        public IEnumerable<ModelDAL> Get(string include = "")
         {
+            if (!String.IsNullOrEmpty(include))
+                return _dbSet.Include(include).ToList();
             return _dbSet.ToList();
         }
 
