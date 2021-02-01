@@ -18,6 +18,8 @@ namespace Faberge.Web.Models
         public DateTime DeliveryDate { get; set; }
 
         // TODO
-        //public int ClientId { get; set; }
+        public int UserId { get; set; }
+        public ProductModel Product { get; set; }
+        public int ProductId { get; set; }
     }
 }

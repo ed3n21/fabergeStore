@@ -13,6 +13,8 @@ namespace Faberge.BL.Models
         public DateTime DeliveryDate { get; set; }
 
         // TODO
-        //public int ClientId { get; set; }
+        public int UserId { get; set; }
+        public ProductBL Product { get; set; }
+        public int ProductId { get; set; }
     }
 }
